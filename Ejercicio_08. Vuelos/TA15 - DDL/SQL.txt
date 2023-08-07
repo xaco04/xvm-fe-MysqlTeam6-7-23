@@ -1,0 +1,78 @@
+-- Tabla Cliente
+CREATE TABLE cliente (
+    dni VARCHAR(20),
+    nombre VARCHAR(50),
+    apellidos VARCHAR(100),
+    direccion VARCHAR(200),
+    telefono VARCHAR(15),
+    tarjeta_credito VARCHAR(20),
+    primary key(dni)
+);
+
+-- Tabla Reserva
+CREATE TABLE reserva (
+    num_reserva INT,
+    fecha_reserva DATE,
+    cantidad_plazas_reservadas INT,
+    dni_cliente VARCHAR(20),
+    primary key(num_reserva, dni_cliente),
+    FOREIGN KEY (dni_cliente) REFERENCES cliente(dni)
+);
+
+-- Tabla Avion
+CREATE TABLE avion (
+    cod_avion VARCHAR(20),
+    num_plazas INT,
+    primary key(cod_avion)
+);
+
+
+-- Tabla Aeropuerto
+CREATE TABLE aeropuerto (
+    cod_aeropuerto INT,
+    nombre VARCHAR(100),
+    localidad VARCHAR(100),
+    pais VARCHAR(100),
+    primary key (cod_aeropuerto)
+);
+
+-- Tabla Asiento
+CREATE TABLE asiento (
+    id_asiento INT,
+    fila INT,
+    columna VARCHAR(5),
+    planta INT,
+    cod_avion VARCHAR(20),
+    primary key (id_asiento),
+    FOREIGN KEY (cod_avion) REFERENCES avion(cod_avion)
+);
+
+-- Tabla Vuelo
+CREATE TABLE vuelo (
+    codigo_vuelo INT,
+    fecha_salida DATE,
+    hora_salida TIME,
+    fecha_llegada DATE,
+    hora_llegada TIME,
+    cod_aeropuerto_salida INT,
+    cod_aeropuerto_llegada INT,
+    cod_avion VARCHAR(20),
+    primary key (codigo_vuelo),
+    FOREIGN KEY (cod_aeropuerto_salida) REFERENCES aeropuerto(cod_aeropuerto),
+    FOREIGN KEY (cod_aeropuerto_llegada) REFERENCES aeropuerto(cod_aeropuerto),
+    FOREIGN KEY (cod_avion) REFERENCES avion(cod_avion)
+);
+
+-- Tabla Tarjeta de Embarque
+CREATE TABLE tarjeta_embarque (
+    num_tarjeta_embarque INT,
+    fecha_reserva DATE,
+    nombre_cliente VARCHAR(50),
+    num_reserva INT,
+    dni_cliente VARCHAR(20),
+    id_asiento INT,
+    primary key (num_tarjeta_embarque),
+    FOREIGN KEY (dni_cliente) REFERENCES cliente(dni)
+    FOREIGN KEY (num_reserva, dni_cliente) REFERENCES reserva(num_reserva, dni_cliente),
+    FOREIGN KEY (id_asiento) REFERENCES asiento(id_asiento)
+);

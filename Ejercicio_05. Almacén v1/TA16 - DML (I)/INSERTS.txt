@@ -1,0 +1,47 @@
+-- Insertar datos en la tabla Piezas
+INSERT INTO piezas (tipo, modelo, descripción, precio)
+VALUES ('Tornillo', 123, 'Tornillo de acero', 5);
+
+
+INSERT INTO piezas (tipo, modelo, descripción, precio)
+VALUES ('Tuerca', 456, 'Tuerca de latón', 3);
+
+
+-- Insertar datos en la tabla Estantería
+INSERT INTO estanteria (id_estanteria, nombre)
+VALUES (1, 'Estantería A');
+
+
+INSERT INTO estanteria (id_estanteria, nombre)
+VALUES (2, 'Estantería B');
+
+
+-- Insertar datos en la tabla Almacén
+INSERT INTO almacen (id_almacen, numero, descripcion, direccion, id_estanteria)
+VALUES (1, 101, 'Almacén 1', 'Calle Principal 123', 1);
+
+
+INSERT INTO almacen (id_almacen, numero, descripcion, direccion, id_estanteria)
+VALUES (2, 202, 'Almacén 2', 'Avenida Central 456', 2);
+
+
+-- Insertar datos en la tabla Guardar
+INSERT INTO guardar (id_guardar, tipo, id_estanteria)
+VALUES (1001, 'Tornillo', 1);
+
+
+INSERT INTO guardar (id_guardar, tipo, id_estanteria)
+VALUES (1002, 'Tornillo', 2);
+
+
+INSERT INTO guardar (id_guardar, tipo, id_estanteria)
+VALUES (1003, 'Tuerca', 1);
+
+
+-- Insertar datos en la tabla Compuesta
+INSERT INTO compuesta (id_compuesta, tipo)
+VALUES (2001, 'Tornillo');
+
+
+INSERT INTO compuesta (id_compuesta, tipo)
+VALUES (2002, 'Tuerca');

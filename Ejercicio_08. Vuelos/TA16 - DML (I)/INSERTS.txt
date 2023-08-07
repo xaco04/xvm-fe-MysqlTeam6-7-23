@@ -1,0 +1,77 @@
+-- Insertar datos en la tabla Cliente
+INSERT INTO cliente (dni, nombre, apellidos, direccion, telefono, tarjeta_credito)
+VALUES ('1234567890', 'Juan', 'Perez', 'Calle Mayor 123', '555-1234', '1234-5678-9012-3456');
+
+
+INSERT INTO cliente (dni, nombre, apellidos, direccion, telefono, tarjeta_credito)
+VALUES ('0987654321', 'Maria', 'Lopez', 'Avenida Central 456', '555-5678', '9876-5432-1098-7654');
+
+
+INSERT INTO cliente (dni, nombre, apellidos, direccion, telefono, tarjeta_credito)
+VALUES ('5678901234', 'Carlos', 'Gomez', 'Plaza Principal 789', '555-9876', '5678-9012-3456-7890');
+
+
+-- Insertar datos en la tabla Avion
+INSERT INTO avion (cod_avion, num_plazas)
+VALUES ('AV123', 200);
+
+
+INSERT INTO avion (cod_avion, num_plazas)
+VALUES ('AV456', 150);
+
+
+-- Insertar datos en la tabla Aeropuerto
+INSERT INTO aeropuerto (cod_aeropuerto, nombre, localidad, pais)
+VALUES (1, 'Aeropuerto Internacional A', 'Ciudad A', 'País A');
+
+
+INSERT INTO aeropuerto (cod_aeropuerto, nombre, localidad, pais)
+VALUES (2, 'Aeropuerto Internacional B', 'Ciudad B', 'País B');
+
+
+-- Insertar datos en la tabla Asiento
+INSERT INTO asiento (id_asiento, fila, columna, planta, cod_avion)
+VALUES (1, 1, 'A', 1, 'AV123');
+
+
+INSERT INTO asiento (id_asiento, fila, columna, planta, cod_avion)
+VALUES (2, 1, 'B', 1, 'AV123');
+
+
+INSERT INTO asiento (id_asiento, fila, columna, planta, cod_avion)
+VALUES (3, 1, 'C', 1, 'AV123');
+
+
+-- Insertar datos en la tabla Vuelo
+INSERT INTO vuelo (codigo_vuelo, fecha_salida, hora_salida, fecha_llegada, hora_llegada, cod_aeropuerto_salida, cod_aeropuerto_llegada, cod_avion)
+VALUES (1, '2023-08-15', '08:00:00', '2023-08-15', '10:00:00', 1, 2, 'AV123');
+
+
+INSERT INTO vuelo (codigo_vuelo, fecha_salida, hora_salida, fecha_llegada, hora_llegada, cod_aeropuerto_salida, cod_aeropuerto_llegada, cod_avion)
+VALUES (2, '2023-08-16', '12:30:00', '2023-08-16', '15:00:00', 2, 1, 'AV456');
+
+
+-- Insertar datos en la tabla Reserva
+INSERT INTO reserva (num_reserva, fecha_reserva, cantidad_plazas_reservadas, dni_cliente)
+VALUES (1001, '2023-07-31', 2, '1234567890');
+
+
+INSERT INTO reserva (num_reserva, fecha_reserva, cantidad_plazas_reservadas, dni_cliente)
+VALUES (1002, '2023-08-01', 1, '0987654321');
+
+
+INSERT INTO reserva (num_reserva, fecha_reserva, cantidad_plazas_reservadas, dni_cliente)
+VALUES (1003, '2023-08-01', 3, '5678901234');
+
+
+-- Insertar datos en la tabla Tarjeta de Embarque
+INSERT INTO tarjeta_embarque (num_tarjeta_embarque, fecha_reserva, nombre_cliente, num_reserva, dni_cliente, id_asiento)
+VALUES (2001, '2023-07-31', 'Juan Perez', 1001, '1234567890', 1);
+
+
+INSERT INTO tarjeta_embarque (num_tarjeta_embarque, fecha_reserva, nombre_cliente, num_reserva, dni_cliente, id_asiento)
+VALUES (2002, '2023-08-01', 'Maria Lopez', 1002, '0987654321', 2);
+
+
+INSERT INTO tarjeta_embarque (num_tarjeta_embarque, fecha_reserva, nombre_cliente, num_reserva, dni_cliente, id_asiento)
+VALUES (2003, '2023-08-01', 'Carlos Gomez', 1003, '5678901234', 3);

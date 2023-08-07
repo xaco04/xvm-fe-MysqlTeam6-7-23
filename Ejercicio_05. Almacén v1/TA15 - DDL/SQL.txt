@@ -1,0 +1,54 @@
+-- Tabla "Piezas"
+CREATE TABLE piezas (
+    tipo VARCHAR(20),
+    modelo INT,
+    descripción VARCHAR(20),
+    precio INT,
+    primary key(tipo)
+);
+
+
+-- Tabla "Estantería"
+CREATE TABLE estanteria (
+    id_estanteria INT,
+    nombre VARCHAR(20),
+    primary key(id_estanteria)
+);
+
+
+-- Tabla "Almacén"
+CREATE TABLE almacen (
+    id_almacen INT,
+    numero INT,
+    descripcion VARCHAR(20),
+    direccion VARCHAR(20),
+    id_estanteria INT,
+    primary key(id_almacen),
+    FOREIGN KEY (id_estanteria) REFERENCES estanteria(id_estanteria)
+    on delete cascade
+    on update cascade
+);
+
+-- Tabla "Guardar"
+CREATE TABLE guardar (
+    id_guardar INT,
+    tipo VARCHAR(20),
+    id_estanteria INT,
+    primary key(id_guardar),
+    FOREIGN KEY (tipo) REFERENCES piezas(tipo)
+on delete cascade
+    on update cascade,
+    FOREIGN KEY (id_estanteria) REFERENCES estanteria(id_estanteria)
+    on delete cascade
+    on update cascade
+);
+
+-- Tabla "Compuesta"
+CREATE TABLE compuesta (
+    id_compuesta INT,
+    tipo VARCHAR(20),
+    primary key (id_compuesta),
+    FOREIGN KEY (tipo) REFERENCES piezas(tipo)
+    on delete cascade
+    on update cascade
+);

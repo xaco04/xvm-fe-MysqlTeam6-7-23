@@ -1,0 +1,78 @@
+-- Insertar datos en la tabla Socios
+INSERT INTO socios (dni, nombre, apellidos, codigo_socio, direccion, telefono)
+VALUES ('1234567890', 'Juan', 'Perez', 'SOC001', 'Calle Mayor 123', 5551234);
+
+
+INSERT INTO socios (dni, nombre, apellidos, codigo_socio, direccion, telefono)
+VALUES ('0987654321', 'Maria', 'Lopez', 'SOC002', 'Avenida Central 456', 5555678);
+
+
+-- Insertar datos en la tabla Articulos
+INSERT INTO articulos (cod_articulo, nombre, ano, resumen, deteriorado, comentario)
+VALUES ('ART001', 'Libro A', 2022, 'Resumen del Libro A', false, 'Buen estado');
+
+
+INSERT INTO articulos (cod_articulo, nombre, ano, resumen, deteriorado, comentario)
+VALUES ('ART002', 'Pelicula B', 2021, 'Resumen de la Pelicula B', true, 'Dañado');
+
+
+-- Insertar datos en la tabla Préstamos
+INSERT INTO prestamos (id_prestamo, fecha_prestamo, fecha_devolucion, fecha_tope, dni, cod_articulo)
+VALUES (1, '2023-07-31', '2023-08-15', '2023-08-10', '1234567890', 'ART001');
+
+
+INSERT INTO prestamos (id_prestamo, fecha_prestamo, fecha_devolucion, fecha_tope, dni, cod_articulo)
+VALUES (2, '2023-08-01', NULL, '2023-08-08', '0987654321', 'ART002');
+
+
+-- Insertar datos en la tabla Autores
+INSERT INTO autores (id_autor, Nombre, País)
+VALUES (1, 'Autor X', 'País X');
+
+
+INSERT INTO autores (id_autor, Nombre, País)
+VALUES (2, 'Autor Y', 'País Y');
+
+
+-- Insertar datos en la tabla Libros
+INSERT INTO libros (id_libro, n_paginas, id_autor, cod_articulo)
+VALUES (1, 300, 1, 'ART001');
+
+
+INSERT INTO libros (id_libro, n_paginas, id_autor, cod_articulo)
+VALUES (2, 250, 2, 'ART001');
+
+
+-- Insertar datos en la tabla Peliculas
+INSERT INTO peliculas (id_pelicula, duracion, id_autor, cod_articulo)
+VALUES (1, '120 min', 2, 'ART002');
+
+
+INSERT INTO peliculas (id_pelicula, duracion, id_autor, cod_articulo)
+VALUES (2, '90 min', 1, 'ART002');
+
+
+-- Insertar datos en la tabla CDs
+INSERT INTO cds (id_cd, N_canciones, id_autor, cod_articulo)
+VALUES (1, 12, 1, 'ART002');
+
+
+INSERT INTO cds (id_cd, N_canciones, id_autor, cod_articulo)
+VALUES (2, 15, 2, 'ART002');
+
+
+-- Insertar datos en la tabla Crean
+INSERT INTO crean (cod_articulo, id_autor)
+VALUES ('ART001', 1);
+
+
+INSERT INTO crean (cod_articulo, id_autor)
+VALUES ('ART001', 2);
+
+
+INSERT INTO crean (cod_articulo, id_autor)
+VALUES ('ART002', 2);
+
+
+INSERT INTO crean (cod_articulo, id_autor)
+VALUES ('ART002', 1);

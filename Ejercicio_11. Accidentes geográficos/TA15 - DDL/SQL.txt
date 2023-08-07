@@ -1,0 +1,90 @@
+
+create table accidente (
+    id_accidente INT,
+    nombre VARCHAR(50),
+    pos_horizontal INT,
+    pos_vertical INT,
+    primary key(id_accidente)
+);
+
+create table rio (
+    id_rio INT,
+    longitud INT,
+    primary key(id_rio)
+);
+
+create table montana (
+    id_montana INT,
+    altura INT,
+    primary key(id_montana)
+);
+
+create table lago (
+    id_lago INT,
+    extension INT,
+    primary key (id_lago)
+);
+
+create table pais (
+    id_pais INT,
+    nombre VARCHAR(50),
+    extension INT,
+    poblacion INT,
+    primary key(id_pais)
+);
+
+create table localidad (
+    id_localidad INT,
+    nombre VARCHAR(50),
+    id_pais INT,
+    primary key(id_localidad),
+    FOREIGN KEY (id_pais) REFERENCES pais(id_pais)
+);
+create table ocurrir (
+    id_rio INT,
+    id_montana INT,
+    id_lago INT,
+    id_accidente INT,
+    FOREIGN KEY (id_rio) REFERENCES rio(id_rio)
+    on delete cascade
+    on update cascade,
+    FOREIGN KEY (id_montana) REFERENCES montana(id_montana)
+    on delete cascade
+    on update cascade,
+    FOREIGN KEY (id_lago) REFERENCES lago(id_lago)
+    on delete cascade
+    on update cascade,
+    FOREIGN KEY (id_accidente) REFERENCES accidente(id_accidente)
+    on delete cascade
+    on update cascade
+);
+
+create table pasar (
+    id_rio INT,
+    id_localidad INT,
+    FOREIGN KEY (id_rio) REFERENCES rio(id_rio)
+    on delete cascade
+    on update cascade,
+    FOREIGN KEY (id_localidad) REFERENCES localidad(id_localidad)
+    on delete cascade
+    on update cascade
+);
+
+create table tiene (
+    id_rio INT,
+    id_montana INT,
+    id_lago INT,
+    id_pais INT,
+    FOREIGN KEY (id_rio) REFERENCES rio(id_rio)
+    on delete cascade
+    on update cascade,
+    FOREIGN KEY (id_montana) REFERENCES montana(id_montana)
+    on delete cascade
+    on update cascade,
+    FOREIGN KEY (id_lago) REFERENCES lago(id_lago)
+    on delete cascade
+    on update cascade,
+    FOREIGN KEY (id_pais) REFERENCES pais(id_pais)
+    on delete cascade
+    on update cascade
+);

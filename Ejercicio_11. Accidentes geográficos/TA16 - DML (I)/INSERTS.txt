@@ -1,0 +1,79 @@
+-- Insertar datos en la tabla accidente
+INSERT INTO accidente (id_accidente, nombre, pos_horizontal, pos_vertical)
+VALUES (1, 'Accidente 1', 100, 200);
+
+
+INSERT INTO accidente (id_accidente, nombre, pos_horizontal, pos_vertical)
+VALUES (2, 'Accidente 2', 300, 400);
+
+
+-- Insertar datos en la tabla rio
+INSERT INTO rio (id_rio, longitud)
+VALUES (1, 500);
+
+
+INSERT INTO rio (id_rio, longitud)
+VALUES (2, 800);
+
+
+-- Insertar datos en la tabla montana
+INSERT INTO montana (id_montana, altura)
+VALUES (1, 2000);
+
+
+INSERT INTO montana (id_montana, altura)
+VALUES (2, 3000);
+
+
+-- Insertar datos en la tabla lago
+INSERT INTO lago (id_lago, extension)
+VALUES (1, 1000);
+
+
+INSERT INTO lago (id_lago, extension)
+VALUES (2, 1500);
+
+
+-- Insertar datos en la tabla pais
+INSERT INTO pais (id_pais, nombre, extension, poblacion)
+VALUES (1, 'Pais A', 10000, 5000000);
+
+
+INSERT INTO pais (id_pais, nombre, extension, poblacion)
+VALUES (2, 'Pais B', 8000, 3000000);
+
+
+-- Insertar datos en la tabla localidad
+INSERT INTO localidad (id_localidad, nombre, id_pais)
+VALUES (1, 'Localidad 1', 1);
+
+
+INSERT INTO localidad (id_localidad, nombre, id_pais)
+VALUES (2, 'Localidad 2', 2);
+
+
+-- Insertar datos en la tabla ocurrir
+INSERT INTO ocurrir (id_rio, id_montana, id_lago, id_accidente)
+VALUES (1, 1, 1, 1);
+
+
+INSERT INTO ocurrir (id_rio, id_montana, id_lago, id_accidente)
+VALUES (2, 2, 2, 2);
+
+
+-- Insertar datos en la tabla pasar
+INSERT INTO pasar (id_rio, id_localidad)
+VALUES (1, 1);
+
+
+INSERT INTO pasar (id_rio, id_localidad)
+VALUES (2, 2);
+
+
+-- Insertar datos en la tabla tiene
+INSERT INTO tiene (id_rio, id_montana, id_lago, id_pais)
+VALUES (1, 1, 1, 1);
+
+
+INSERT INTO tiene (id_rio, id_montana, id_lago, id_pais)
+VALUES (2, 2, 2, 2);

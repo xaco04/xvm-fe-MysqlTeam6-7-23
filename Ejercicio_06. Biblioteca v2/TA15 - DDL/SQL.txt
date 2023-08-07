@@ -1,0 +1,103 @@
+-- Tabla Socios
+CREATE TABLE socios (
+    dni VARCHAR(20),
+    nombre VARCHAR(100),
+    apellidos VARCHAR(100),
+    codigo_socio VARCHAR(20),
+    direccion VARCHAR(200),
+    telefono INT,
+    primary key (dni)
+);
+
+-- Tabla Articulos
+CREATE TABLE articulos (
+    cod_articulo VARCHAR(20),
+    nombre VARCHAR(100),
+    ano INT,
+    resumen VARCHAR(500),
+    deteriorado BOOLEAN,
+    comentario VARCHAR(500),
+    primary key(cod_articulo)
+);
+
+-- Tabla Préstamos
+CREATE TABLE prestamos (
+    id_prestamo INT,
+    fecha_prestamo DATE,
+    fecha_devolucion DATE,
+    fecha_tope DATE,
+    dni VARCHAR(20),
+    cod_articulo VARCHAR(20),
+    primary key(id_prestamo),
+    FOREIGN KEY (dni) REFERENCES socios(dni)
+    on delete cascade
+    on update cascade,
+    FOREIGN KEY (cod_articulo) REFERENCES articulos(cod_articulo)
+    on delete cascade
+    on update cascade
+);
+
+-- Tabla Autores
+CREATE TABLE autores (
+    id_autor INT,
+    Nombre VARCHAR(100),
+    País VARCHAR(100),
+    primary key(id_autor)
+);
+
+-- Tabla Libros
+CREATE TABLE libros (
+    id_libro INT,
+    n_paginas INT,
+    id_autor INT,
+    cod_articulo VARCHAR(20),
+    primary key(id_libro),
+    FOREIGN KEY (id_autor) REFERENCES autores(id_autor)
+    on delete cascade
+    on update cascade,
+    FOREIGN KEY (cod_articulo) REFERENCES articulos(cod_articulo)
+    on delete cascade
+    on update cascade
+);
+
+-- Tabla Peliculas
+CREATE TABLE peliculas (
+    id_pelicula INT,
+    duracion VARCHAR(20),
+    id_autor INT,
+    cod_articulo VARCHAR(20),
+    primary key(id_pelicula),
+    FOREIGN KEY (id_autor) REFERENCES autores(id_autor)
+    on delete cascade
+    on update cascade,
+    FOREIGN KEY (cod_articulo) REFERENCES articulos(cod_articulo)
+    on delete cascade
+    on update cascade
+);
+
+-- Tabla CDs
+CREATE TABLE cds (
+    id_cd INT,
+    N_canciones INT,
+    id_autor INT,
+    cod_articulo VARCHAR(20),
+    primary key (id_cd),
+    FOREIGN KEY (id_autor) REFERENCES autores(id_autor)
+    on delete cascade
+    on update cascade,
+    FOREIGN KEY (cod_articulo) REFERENCES articulos(cod_articulo)
+    on delete cascade
+    on update cascade
+);
+
+-- Tabla Crean
+CREATE TABLE crean (
+    cod_articulo VARCHAR(20),
+    id_autor INT,
+    FOREIGN KEY (cod_articulo) REFERENCES articulos(cod_articulo)
+    on delete cascade
+    on update cascade,
+    FOREIGN KEY (id_autor) REFERENCES autores(id_autor)
+    on delete cascade
+    on update cascade
+);
